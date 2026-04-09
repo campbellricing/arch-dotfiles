@@ -1,0 +1,75 @@
+@import "mocha.css";
+
+* {
+  color: @text;
+  font-family: "Upheaval Pro";
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+window#waybar>box {
+  padding: 4px 12px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#workspaces button.active {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#cpu {
+  background-color: @blue80;
+  border-radius: 8px;
+  padding: 0 10px 0 12px;
+  color: @base;
+}
+
+#memory {
+  background-color: @green80;
+  border-radius: 8px;
+  padding: 0 10px 0 12px;
+  color: @base;
+}
+
+#temperature {
+  background-color: @yellow80;
+  border-radius: 8px;
+  padding: 0 12px 0;
+  color: @base;
+}
+
+#pulseaudio {
+  background-color: @pink80;
+  border-radius: 8px;
+  padding: 0 12px 0;
+  color: @base;
+}
+
+#battery.bat0,
+#battery.bat1 {
+  background-color: @maroon80;
+  color: @base;
+  padding: 0 8px;
+}
+
+#battery.bat0 {
+  border-radius: 8px 0 0 8px;
+  padding-left: 12px;
+}
+
+#battery.bat1 {
+  border-radius: 0 8px 8px 0;
+  padding-right: 12px;
+  margin-left: -4px;
+}
+
+#clock {
+  background-color: @mauve80;
+  border-radius: 8px;
+  padding: 0 12px 0;
+  color: @base;
+}

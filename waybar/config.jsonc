@@ -1,0 +1,118 @@
+{
+  "reload_style_on_change": true,
+  "position": "top",
+  "spacing": 4,
+  "modules-left": [
+    "custom/logo",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "temperature",
+    "pulseaudio",
+    "battery#bat0",
+    "battery#bat1",
+    "clock"
+  ],
+  "custom/logo": {
+    "format": "<span font='omarchy'> </span>"
+  },
+  "hyprland/window": {
+    "format": "{class}"
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "0"
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": []
+    }
+  },
+  "cpu": {
+    "format": "{usage}%  ",
+    "interval": 3
+  },
+  "memory": {
+    "format": "{}%  ",
+    "interval": 3
+  },
+  "temperature": {
+    "format": "{temperatureC}°C ",
+    "interval": 3,
+    "sensor": "pch_cannonlake-virtual-0"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " ",
+    "format-icons": {
+      "headphone": " ",
+      "headset": " ",
+      "default": [
+        "",
+        " ",
+        "  "
+      ]
+    }
+  },
+  "battery#bat0": {
+    "bat": "BAT0",
+    "interval": 5,
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ]
+  },
+  "battery#bat1": {
+    "bat": "BAT1",
+    "interval": 5,
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ]
+  },
+  "clock": {
+    "format": "{:%a %d %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  }
+}
