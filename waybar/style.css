@@ -10,7 +10,7 @@ window#waybar {
 }
 
 window#waybar>box {
-  padding: 4px 12px;
+  padding: 4px 8px 0 16px;
 }
 
 #workspaces button.empty {
