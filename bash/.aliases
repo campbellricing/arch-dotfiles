@@ -2,7 +2,7 @@
 shopt -s expand_aliases
 
 # utils
-alias neofetch='neofetch --ascii ~/.config/neofetch/logo.txt'
+alias neofetchi='neofetch --backend kitty --source ~/.config/images/avatar/avatar.jpg'
 alias powerplan='cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
 
 # directories
