@@ -2,8 +2,8 @@
 [[ $- != *i* ]] && return
 
 # Load exports
-if [ -f ~/.config/bash/.exports ]; then
-  . ~/.config/bash/.exports
+if [ -f ~/.config/bash/.exports.sh ]; then
+  . ~/.config/bash/.exports.sh
 fi
 
 # Enable bash completion
