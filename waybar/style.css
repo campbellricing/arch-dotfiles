@@ -3,7 +3,6 @@
 * {
   color: @text;
   font-family: "Upheaval Pro";
-  font-size: 16px;
 }
 
 window#waybar {
@@ -11,7 +10,7 @@ window#waybar {
 }
 
 window#waybar>box {
-  padding: 8px 8px 0 16px;
+  padding: 4px 4px 0px 8px;
 }
 
 #workspaces button.empty {
@@ -23,28 +22,28 @@ window#waybar>box {
 }
 
 #cpu {
-  background-color: @blue80;
+  background-color: @blue;
   border-radius: 8px;
   padding: 0 10px 0 12px;
   color: @base;
 }
 
 #memory {
-  background-color: @green80;
+  background-color: @green;
   border-radius: 8px;
   padding: 0 10px 0 12px;
   color: @base;
 }
 
 #temperature {
-  background-color: @yellow80;
+  background-color: @yellow;
   border-radius: 8px;
   padding: 0 12px 0;
   color: @base;
 }
 
 #pulseaudio {
-  background-color: @pink80;
+  background-color: @pink;
   border-radius: 8px;
   padding: 0 12px 0;
   color: @base;
@@ -52,7 +51,7 @@ window#waybar>box {
 
 #battery.bat0,
 #battery.bat1 {
-  background-color: @maroon80;
+  background-color: @maroon;
   color: @base;
   padding: 0 8px;
 }
@@ -69,7 +68,7 @@ window#waybar>box {
 }
 
 #clock {
-  background-color: @mauve80;
+  background-color: @mauve;
   border-radius: 8px;
   padding: 0 12px 0;
   color: @base;
