@@ -1,7 +1,7 @@
 {
   "reload_style_on_change": true,
   "position": "top",
-  "spacing": 4,
+  "spacing": 0,
   "modules-left": [
     "custom/logo",
     "hyprland/window"
@@ -10,14 +10,26 @@
     "hyprland/workspaces"
   ],
   "modules-right": [
-    "cpu",
-    "memory",
-    "temperature",
-    "pulseaudio",
-    "battery#bat0",
-    "battery#bat1",
+    "group/stats",
+    "group/media",
     "clock"
   ],
+  "group/stats": {
+    "orientation": "inherit",
+    "modules": [
+      "cpu",
+      "memory",
+      "temperature"
+    ]
+  },
+  "group/media": {
+    "orientation": "inherit",
+    "modules": [
+      "pulseaudio",
+      "battery#bat0",
+      "battery#bat1"
+    ]
+  },
   "custom/logo": {
     "format": "<span font='omarchy'> </span>"
   },
@@ -48,15 +60,15 @@
     }
   },
   "cpu": {
-    "format": "{usage}%  ",
+    "format": "  {usage}%",
     "interval": 3
   },
   "memory": {
-    "format": "{}%  ",
+    "format": "  {}%",
     "interval": 3
   },
   "temperature": {
-    "format": "{temperatureC}°C ",
+    "format": " {temperatureC}°C",
     "interval": 3,
     "sensor": "pch_cannonlake-virtual-0"
   },

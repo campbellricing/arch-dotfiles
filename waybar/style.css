@@ -1,8 +1,9 @@
-@import "mocha.css";
+@import "../styles/mocha.css";
 
 * {
-  color: @text;
   font-family: "Upheaval Pro";
+  color: @text;
+  transition: all 100ms ease;
 }
 
 window#waybar {
@@ -10,66 +11,60 @@ window#waybar {
 }
 
 window#waybar>box {
-  padding: 4px 4px 0px 8px;
+  padding: 4px 4px 0 8px;
+}
+
+#workspaces button {
+  padding: 0 8px;
+}
+
+#workspaces button.active {
+  background-color: @base70;
+  border-radius: 4px;
+  padding: 0 16px;
 }
 
 #workspaces button.empty {
   opacity: 0.5;
 }
 
-#workspaces button.active {
-  background-color: rgba(0, 0, 0, 0.4);
+.modules-right * {
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+#stats {
+  background-color: @base80;
+}
+
+#media {
+  margin: 0 4px;
+  background-color: @base80;
 }
 
 #cpu {
-  background-color: @blue;
-  border-radius: 8px;
-  padding: 0 10px 0 12px;
-  color: @base;
+  color: @blue;
 }
 
 #memory {
-  background-color: @green;
-  border-radius: 8px;
-  padding: 0 10px 0 12px;
-  color: @base;
+  color: @green;
 }
 
 #temperature {
-  background-color: @yellow;
-  border-radius: 8px;
-  padding: 0 12px 0;
-  color: @base;
+  color: @yellow;
 }
 
 #pulseaudio {
-  background-color: @pink;
-  border-radius: 8px;
-  padding: 0 12px 0;
-  color: @base;
+  color: @lavender;
 }
 
 #battery.bat0,
 #battery.bat1 {
-  background-color: @maroon;
-  color: @base;
-  padding: 0 8px;
-}
-
-#battery.bat0 {
-  border-radius: 8px 0 0 8px;
-  padding-left: 12px;
-}
-
-#battery.bat1 {
-  border-radius: 0 8px 8px 0;
-  padding-right: 12px;
-  margin-left: -4px;
+  color: @teal;
 }
 
 #clock {
-  background-color: @mauve;
-  border-radius: 8px;
-  padding: 0 12px 0;
-  color: @base;
+  padding: 0 10px;
+  color: @mauve;
+  background-color: @base80;
 }
