@@ -11,3 +11,6 @@ end
 -- Normal mode tab switching
 map("n", "<Tab>", "<cmd>bnext<cr>", extend_opts({ desc = "Next tab" }))
 map("n", "<S-Tab>", "<cmd>bprevious<cr>", extend_opts({ desc = "Previous tab" }))
+-- Split window
+map("n", "ss", ":split<Return>", extend_opts({ desc = "Horizontal split" }))
+map("n", "sv", ":vsplit<Return>", extend_opts({ desc = "Vertical split" }))

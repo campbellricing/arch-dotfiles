@@ -52,7 +52,7 @@
       "app-name": "example.app.id"
     }
   },
-  "widgets": ["inhibitors", "title", "dnd", "notifications"],
+  "widgets": ["inhibitors", "title", "notifications"],
   "widget-config": {
     "notifications": {
       "vexpand": true

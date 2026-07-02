@@ -1,46 +1,29 @@
 {
   "reload_style_on_change": true,
   "position": "top",
-  "spacing": 0,
+  "spacing": 4,
   "modules-left": [
     "custom/logo",
-    "hyprland/window"
-  ],
-  "modules-center": [
     "hyprland/workspaces"
   ],
-  "modules-right": [
-    "group/stats",
-    "group/media",
-    "clock"
+  "modules-center": [
+    "clock#date"
   ],
-  "group/stats": {
-    "orientation": "inherit",
-    "modules": [
-      "cpu",
-      "memory",
-      "temperature"
-    ]
-  },
-  "group/media": {
-    "orientation": "inherit",
-    "modules": [
-      "pulseaudio",
-      "battery#bat0",
-      "battery#bat1"
-    ]
-  },
+  "modules-right": [
+    "cpu",
+    "memory",
+    "temperature",
+    "pulseaudio",
+    "custom/battery",
+    "group/time"
+  ],
   "custom/logo": {
-    "format": "<span font='omarchy'> </span>"
-  },
-  "hyprland/window": {
-    "format": "{class}"
+    "format": " ",
+    "tooltip": false
   },
   "hyprland/workspaces": {
-    "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "default": "",
       "1": "1",
       "2": "2",
       "3": "3",
@@ -53,24 +36,13 @@
       "10": "0"
     },
     "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": []
+      "*": [
+        1,
+        2,
+        3,
+        4
+      ]
     }
-  },
-  "cpu": {
-    "format": "  {usage}%",
-    "interval": 3
-  },
-  "memory": {
-    "format": "  {}%",
-    "interval": 3
-  },
-  "temperature": {
-    "format": " {temperatureC}°C",
-    "interval": 3,
-    "sensor": "pch_cannonlake-virtual-0"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -83,48 +55,64 @@
         " ",
         "  "
       ]
+    },
+    "tooltip": false
+  },
+  "cpu": {
+    "format": "  {usage}%",
+    "interval": 3,
+    "tooltip": false
+  },
+  "memory": {
+    "format": "  {}%",
+    "interval": 3,
+    "tooltip": false
+  },
+  "temperature": {
+    "format": "{icon} {temperatureC}°C",
+    "interval": 3,
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "sensor": "pch_cannonlake-virtual-0",
+    "tooltip": false
+  },
+  "clock#date": {
+    "format": "{:%A, %B %d, %Y}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "format": {
+        "months": "<span color='#cba6f7'><b>{}</b></span>",
+        "days": "{}",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "today": "<span background='#cba6f7' foreground='#1e1e2e'><b>{}</b></span>"
+      }
     }
   },
-  "battery#bat0": {
-    "bat": "BAT0",
-    "interval": 5,
-    "states": {
-      "good": 80,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
+  "custom/battery": {
+    "exec": "~/.config/waybar/scripts/battery.sh",
+    "interval": 10,
+    "hide-empty-text": true,
+    "tooltip": false
+  },
+  "group/time": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/daynight",
+      "clock#time"
     ]
   },
-  "battery#bat1": {
-    "bat": "BAT1",
-    "interval": 5,
-    "states": {
-      "good": 80,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ]
+  "custom/daynight": {
+    "exec": "~/.config/waybar/scripts/daynight.sh",
+    "interval": 60,
+    "tooltip": false
   },
-  "clock": {
-    "format": "{:%a %d %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  "clock#time": {
+    "format": "{:%H:%M}",
+    "tooltip": false
   }
 }

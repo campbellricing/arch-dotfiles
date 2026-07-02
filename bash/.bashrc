@@ -17,11 +17,11 @@ if [ -f ~/.config/bash/ohmybash.sh ]; then
 fi
 
 # ble.sh syntax highlighting
-[[ $- == *i* ]] && source /usr/share/blesh/ble.sh
+[[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh
 bleopt prompt_status_line=
 bleopt exec_errexit_mark=
 
 # Load aliases
-if [ -f ~/.config/bash/.aliases ]; then
-  . ~/.config/bash/.aliases
+if [ -f ~/.config/bash/.aliases.sh ]; then
+  . ~/.config/bash/.aliases.sh
 fi

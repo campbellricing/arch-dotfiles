@@ -21,7 +21,7 @@
         "nextPage": "l",
         "prevPage": "h",
         "preview": "space",
-        "quit": "esc",
+        "quit": "esc,q",
         "remove": "backspace",
         "selectSingle": "v",
         "selectUp": "shift+k",
@@ -31,10 +31,10 @@
         "yankFilter": "ctrl+s"
     },
     "imageDisplay": {
-        "type": "basic",
-        "scaleX": 9,
-        "scaleY": 9,
-        "heightCut": 2
+        "type": "kitty",
+        "scaleX": 1,
+        "scaleY": 1,
+        "heightCut": 0
     },
     "excludedApps": [],
     "autoPaste": {
@@ -45,3 +45,4 @@
     "enableMouse": true,
     "enableDescription": false
 }
+

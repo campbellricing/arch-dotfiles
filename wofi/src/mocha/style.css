@@ -52,8 +52,9 @@
 @define-color	crust-rgb rgb(17, 17, 27);
 
 * {
-  font-family: 'Upheaval Pro', monospace;
-  font-size: 20px;
+  font-family: 'JetBrains Nerd Font', monospace;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 /* Window */
@@ -158,4 +159,15 @@ window {
 
 #entry:drop(active) {
   background-color: @lavender !important;
+}
+
+img {
+  margin-right: 10px;
+  width: 80px;
+  height: 50px;
+  border-radius: 6px;
+}
+
+#entry {
+  padding: 6px;
 }

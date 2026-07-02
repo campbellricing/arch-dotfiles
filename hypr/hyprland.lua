@@ -1,0 +1,9 @@
+require("autostart")
+require("bindings")
+require("environment")
+require("input")
+require("looknfeel")
+require("mics")
+require("monitors")
+require("permissions");
+require("windowsnworkspaces");

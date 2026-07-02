@@ -114,3 +114,69 @@
 @define-color base70 rgba(24, 25, 38, 0.7);
 @define-color base80 rgba(24, 25, 38, 0.8);
 @define-color base90 rgba(24, 25, 38, 0.9);
+
+@define-color text50 rgba(205, 214, 244, 0.5);
+@define-color text60 rgba(205, 214, 244, 0.6);
+@define-color text70 rgba(205, 214, 244, 0.7);
+@define-color text80 rgba(205, 214, 244, 0.8);
+@define-color text90 rgba(205, 214, 244, 0.9);
+
+@define-color subtext150 rgba(186, 194, 222, 0.5);
+@define-color subtext160 rgba(186, 194, 222, 0.6);
+@define-color subtext170 rgba(186, 194, 222, 0.7);
+@define-color subtext180 rgba(186, 194, 222, 0.8);
+@define-color subtext190 rgba(186, 194, 222, 0.9);
+
+@define-color subtext050 rgba(166, 173, 200, 0.5);
+@define-color subtext060 rgba(166, 173, 200, 0.6);
+@define-color subtext070 rgba(166, 173, 200, 0.7);
+@define-color subtext080 rgba(166, 173, 200, 0.8);
+@define-color subtext090 rgba(166, 173, 200, 0.9);
+
+@define-color overlay250 rgba(147, 153, 178, 0.5);
+@define-color overlay260 rgba(147, 153, 178, 0.6);
+@define-color overlay270 rgba(147, 153, 178, 0.7);
+@define-color overlay280 rgba(147, 153, 178, 0.8);
+@define-color overlay290 rgba(147, 153, 178, 0.9);
+
+@define-color overlay150 rgba(127, 132, 156, 0.5);
+@define-color overlay160 rgba(127, 132, 156, 0.6);
+@define-color overlay170 rgba(127, 132, 156, 0.7);
+@define-color overlay180 rgba(127, 132, 156, 0.8);
+@define-color overlay190 rgba(127, 132, 156, 0.9);
+
+@define-color overlay050 rgba(108, 112, 134, 0.5);
+@define-color overlay060 rgba(108, 112, 134, 0.6);
+@define-color overlay070 rgba(108, 112, 134, 0.7);
+@define-color overlay080 rgba(108, 112, 134, 0.8);
+@define-color overlay090 rgba(108, 112, 134, 0.9);
+
+@define-color surface250 rgba(88, 91, 112, 0.5);
+@define-color surface260 rgba(88, 91, 112, 0.6);
+@define-color surface270 rgba(88, 91, 112, 0.7);
+@define-color surface280 rgba(88, 91, 112, 0.8);
+@define-color surface290 rgba(88, 91, 112, 0.9);
+
+@define-color surface150 rgba(69, 71, 90, 0.5);
+@define-color surface160 rgba(69, 71, 90, 0.6);
+@define-color surface170 rgba(69, 71, 90, 0.7);
+@define-color surface180 rgba(69, 71, 90, 0.8);
+@define-color surface190 rgba(69, 71, 90, 0.9);
+
+@define-color surface050 rgba(49, 50, 68, 0.5);
+@define-color surface060 rgba(49, 50, 68, 0.6);
+@define-color surface070 rgba(49, 50, 68, 0.7);
+@define-color surface080 rgba(49, 50, 68, 0.8);
+@define-color surface090 rgba(49, 50, 68, 0.9);
+
+@define-color mantle50 rgba(24, 24, 37, 0.5);
+@define-color mantle60 rgba(24, 24, 37, 0.6);
+@define-color mantle70 rgba(24, 24, 37, 0.7);
+@define-color mantle80 rgba(24, 24, 37, 0.8);
+@define-color mantle90 rgba(24, 24, 37, 0.9);
+
+@define-color crust50 rgba(17, 17, 27, 0.5);
+@define-color crust60 rgba(17, 17, 27, 0.6);
+@define-color crust70 rgba(17, 17, 27, 0.7);
+@define-color crust80 rgba(17, 17, 27, 0.8);
+@define-color crust90 rgba(17, 17, 27, 0.9);

@@ -1,9 +1,9 @@
 @import "../styles/mocha.css";
 
 * {
-  font-family: "Upheaval Pro";
-  color: @text;
-  transition: all 100ms ease;
+  font-family: "JetBrains Nerd Font";
+  font-size: 14px;
+  font-weight: 600;
 }
 
 window#waybar {
@@ -11,60 +11,64 @@ window#waybar {
 }
 
 window#waybar>box {
-  padding: 4px 4px 0 8px;
+  margin: 4px 4px 0px;
+  padding: 6px;
+  background-color: @crust80;
+  border-radius: 999px;
+}
+
+#custom-logo {
+  color: @text;
+  padding: 0px 2px 0 6px;
+  background-color: @surface0;
+  border-radius: 999px;
+}
+
+#workspaces {
+  color: @base;
+  border-radius: 999px;
 }
 
 #workspaces button {
-  padding: 0 8px;
+  margin-right: 4px;
 }
 
-#workspaces button.active {
-  background-color: @base70;
-  border-radius: 4px;
+#workspaces button {
+  padding: 0 4px 0 5px;
+  background-color: @mauve50;
+  border-radius: 999px;
+  transition: padding 100ms ease;
+}
+
+#workspaces button.active,
+#workspaces button.empty.active {
   padding: 0 16px;
+  color: @base;
+  background-color: @mauve;
+  border-radius: 999px;
+  opacity: 1;
 }
 
 #workspaces button.empty {
-  opacity: 0.5;
-}
-
-.modules-right * {
-  padding: 0 4px;
-  border-radius: 4px;
-}
-
-#stats {
-  background-color: @base80;
-}
-
-#media {
-  margin: 0 4px;
-  background-color: @base80;
-}
-
-#cpu {
-  color: @blue;
-}
-
-#memory {
-  color: @green;
-}
-
-#temperature {
-  color: @yellow;
-}
-
-#pulseaudio {
-  color: @lavender;
-}
-
-#battery.bat0,
-#battery.bat1 {
-  color: @teal;
+  color: @text;
+  background-color: @overlay050;
+  opacity: 0.4;
 }
 
 #clock {
-  padding: 0 10px;
-  color: @mauve;
-  background-color: @base80;
+  color: @text;
+  border-radius: 999px;
+}
+
+#cpu,
+#memory,
+#temperature,
+#time,
+#custom-battery,
+#custom-bt-battery,
+#pulseaudio {
+  padding: 0 8px;
+  color: @text;
+  background-color: @surface0;
+  border-radius: 999px;
 }
