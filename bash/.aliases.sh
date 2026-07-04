@@ -34,8 +34,7 @@ alias gra='git restore .'
 alias gst='git stash -u'
 
 # yarn
-alias yd='yarn dev'
-alias ydh='yarn dev --host'
+alias yd='yarn dev --host'
 alias yf='yarn format'
 alias yl='yarn lint'
 alias ylf='yarn lint --fix'
