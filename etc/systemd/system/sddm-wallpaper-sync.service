@@ -1,0 +1,6 @@
+[Unit]
+Description=Copy current caelestia wallpaper into the SilentSDDM theme
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/sddm-wallpaper-sync

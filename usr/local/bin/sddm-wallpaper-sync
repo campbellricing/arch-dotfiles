@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Copies the current caelestia wallpaper into the SilentSDDM theme so the
+# login screen matches the desktop. Triggered by sddm-wallpaper-sync.path.
+
+set -u
+
+STATE_FILE="/home/campbells/.local/state/caelestia/wallpaper/path.txt"
+DEST="/usr/share/sddm/themes/silent-caelestia/backgrounds/current-wallpaper.png"
+OWNER="campbells"
+
+[ -f "$STATE_FILE" ] || exit 0
+
+wall="$(head -n1 "$STATE_FILE")"
+[ -n "$wall" ] || exit 0
+
+wall="$(realpath -e -- "$wall" 2>/dev/null)" || exit 0
+
+# path.txt is user-writable and this runs as root: only copy regular files
+# owned by the user, with an image extension, so nothing sensitive can be
+# exposed world-readable in the theme dir.
+[ -f "$wall" ] || exit 0
+[ "$(stat -c %U -- "$wall")" = "$OWNER" ] || exit 0
+
+case "${wall##*.}" in
+    jpg|jpeg|png|webp|tif|tiff|gif|JPG|JPEG|PNG|WEBP|TIF|TIFF|GIF) ;;
+    *) exit 0 ;;
+esac
+
+# Convert to PNG so the file's extension always matches its content; the SDDM
+# greeter's Qt image loader rejects files whose name and format don't line up.
+tmp="$(mktemp --suffix=.png)"
+trap 'rm -f "$tmp"' EXIT
+magick "${wall}[0]" "png:$tmp" || exit 0
+install -m 644 -o root -g root -- "$tmp" "$DEST"

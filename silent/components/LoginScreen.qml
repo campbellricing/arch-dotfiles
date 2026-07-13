@@ -305,9 +305,10 @@ Item {
                     enabled: loginScreen.state === "normal"
                     visible: loginScreen.userNeedsPassword || !loginScreen.foundUsers
                     icon: Config.getIcon(Config.passwordInputIcon)
-                    placeholder: (textConstants && textConstants.password) ? textConstants.password : "Password"
+                    placeholder: "Enter your password"
                     isPassword: true
-                    splitBorderRadius: true
+                    splitBorderRadius: false
+                    showSubmitButton: true
                     onAccepted: {
                         loginScreen.login();
                     }

@@ -1,0 +1,6 @@
+[Unit]
+Description=Apply caelestia scheme to terminals (dark-only, tmux-safe)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.config/caelestia/apply-term-scheme.py

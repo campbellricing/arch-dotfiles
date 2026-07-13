@@ -1,7 +1,7 @@
 ; https://github.com/uiriansan/SilentSDDM
 
 [SddmGreeterTheme]
-Name=Silent
+Name=Silent (Caelestia)
 Type=sddm-theme
 Description=A very customizable SDDM theme that actually looks good.
 License=GPL-3.0-or-later

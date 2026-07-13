@@ -1,0 +1,8 @@
+[Unit]
+Description=Watch caelestia wallpaper state and sync it to SDDM
+
+[Path]
+PathModified=/home/campbells/.local/state/caelestia/wallpaper/path.txt
+
+[Install]
+WantedBy=multi-user.target

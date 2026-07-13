@@ -1,5 +1,5 @@
 [Default Applications]
-inode/directory=org.gnome.Nautilus.desktop
+inode/directory=thunar.desktop
 x-scheme-handler/pttp=CiscoPacketTracerPtsa-9.0.0.desktop
 application/x-pka=CiscoPacketTracer-9.0.0.desktop
 application/x-pkt=CiscoPacketTracer-9.0.0.desktop
@@ -7,7 +7,22 @@ application/x-pkz=CiscoPacketTracer-9.0.0.desktop
 application/x-pksz=CiscoPacketTracer-9.0.0.desktop
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-startcenter.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+image/png=sushi.desktop
+image/jpeg=sushi.desktop
+image/webp=sushi.desktop
+image/gif=sushi.desktop
+image/bmp=sushi.desktop
+image/svg+xml=sushi.desktop
+image/avif=sushi.desktop
 
 [Added Associations]
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-startcenter.desktop;
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-startcenter.desktop;
+video/mp4=mpv.desktop;vlc.desktop;
+image/png=swappy.desktop;
+image/jpeg=swappy.desktop;
+image/webp=swappy.desktop
+image/gif=swappy.desktop
+image/bmp=swappy.desktop
+image/svg+xml=swappy.desktop
+image/avif=swappy.desktop

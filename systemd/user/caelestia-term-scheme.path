@@ -1,0 +1,8 @@
+[Unit]
+Description=Watch caelestia scheme.json for theme changes
+
+[Path]
+PathChanged=%h/.local/state/caelestia/scheme.json
+
+[Install]
+WantedBy=default.target
