@@ -106,7 +106,10 @@ In order, after the bootstrap:
   [SilentSDDM](https://github.com/uiriansan/SilentSDDM)) deployed to
   `/usr/share/sddm/themes/silent-caelestia`. Deployed under a name pacman
   doesn't own so package updates can never clobber it. The `sddm-silent-theme`
-  AUR package is intentionally **not** installed.
+  AUR package is intentionally **not** installed — which means its Qt runtime
+  deps must stay **explicitly** installed: `qt6-multimedia-ffmpeg` (pulls
+  `qt6-multimedia`; theme fails to load without it) and `qt6-virtualkeyboard`
+  (both in `packages/pacman.txt`).
 - `etc/sddm.conf`: `Current=silent-caelestia`, `FacesDir` → repo avatar dir.
 - **Wallpaper sync**: `sddm-wallpaper-sync.path` (root) watches
   `~/.local/state/caelestia/wallpaper/path.txt`; on change
