@@ -105,6 +105,25 @@
                 "--started-from-file"
             ]
         },
+        "idle": {
+            "timeouts": [
+                {
+                    "idleAction": "lock",
+                    "timeout": 600
+                },
+                {
+                    "idleAction": "dpms off",
+                    "returnAction": "dpms on",
+                    "timeout": 900
+                },
+                {
+                    "idleAction": [
+                        "suspendThenHibernate"
+                    ],
+                    "timeout": 960
+                }
+            ]
+        },
         "logo": "caelestia"
     },
     "launcher": {
