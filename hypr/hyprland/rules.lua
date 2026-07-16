@@ -42,7 +42,9 @@ hl.window_rule({ match = { class = "foot", title = "nmtui" }, tag = "+float_60_7
 hl.window_rule({ match = { class = "org.pulseaudio.pavucontrol|yad-icon-browser" }, tag = "+float_60_70" })
 hl.window_rule({ match = { class = "org.gnome.Settings" }, tag = "+float_70_80" })
 hl.window_rule({ match = { class = "nwg-look" }, tag = "+float_50_60" })
-hl.window_rule({ match = { class = "thunar" }, tag = "+float_60_70" })
+-- Thunar's app_id is "thunar" when it spawns its own window but "Thunar" when
+-- the window comes from the resident daemon, so match both
+hl.window_rule({ match = { class = "[Tt]hunar" }, tag = "+float_60_70" })
 
 hl.window_rule({ match = { class = "mpv" }, tag = "+float", maximize = true })
 

@@ -24,6 +24,9 @@ hl.on("hyprland.start", function()
 	-- Input methods
 	hl.exec_cmd("fcitx5")
 
+	-- Thunar daemon (consistent window class + faster window open)
+	hl.exec_cmd("thunar --daemon")
+
 	-- Start shell
 	hl.exec_cmd("caelestia shell -d")
 end)
