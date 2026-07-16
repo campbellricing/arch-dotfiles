@@ -21,21 +21,18 @@ Singleton {
             "general:gaps_out": 0,
             "general:border_size": 1,
             "decoration:rounding": 0,
-            "general:allow_tearing": 1,
-            "decoration:active_opacity": 1,
-            "decoration:inactive_opacity": 1,
-            "decoration:fullscreen_opacity": 1
+            "general:allow_tearing": 1
         });
-        // Window rules override decoration opacity, so also add a runtime rule
-        // to beat the global `opacity 0.95 override` rule (cleared by reload on disable)
-        Hypr.extras.message(Hypr.usingLua ? 'eval hl.window_rule({ match = { fullscreen = false }, opacity = "1 override" })' : "keyword windowrulev2 opacity 1 override,fullscreen:0");
+        // Make the focused window fully opaque; a runtime rule is needed to beat the
+        // global `opacity 0.95 override` rule (cleared by the reload on disable)
+        Hypr.extras.message(Hypr.usingLua ? 'eval hl.window_rule({ match = { focus = true }, opacity = "1 override" })' : "keyword windowrulev2 opacity 1 override,focus:1");
     }
 
     onEnabledChanged: {
         if (enabled) {
             setDynamicConfs();
             if (GlobalConfig.utilities.toasts.gameModeChanged)
-                Toaster.toast(qsTr("Game mode enabled"), qsTr("Disabled Hyprland animations, blur, gaps, shadows and transparency"), "gamepad");
+                Toaster.toast(qsTr("Game mode enabled"), qsTr("Disabled Hyprland animations, blur, gaps, shadows and focused window transparency"), "gamepad");
         } else {
             Hypr.extras.message("reload");
             if (GlobalConfig.utilities.toasts.gameModeChanged)
