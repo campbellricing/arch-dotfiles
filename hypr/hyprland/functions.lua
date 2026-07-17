@@ -28,12 +28,14 @@ local function resize_by_screen(x, y)
 end
 
 local function resize_active_window(x, y)
-	local win = hl.get_active_window()
-	if win and win.size then
-		local w = (win.size.x * (x / 100)) or 800
-		local h = (win.size.y * (y / 100)) or 600
+	return function()
+		local win = hl.get_active_window()
+		if win and win.size then
+			local w = win.size.x * (x / 100)
+			local h = win.size.y * (y / 100)
 
-		return { x = w, y = h, relative = true }
+			hl.dispatch(hl.dsp.window.resize({ x = w, y = h, relative = true }))
+		end
 	end
 end
 
