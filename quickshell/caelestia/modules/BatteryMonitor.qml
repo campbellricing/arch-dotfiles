@@ -10,6 +10,11 @@ Scope {
 
     readonly property list<var> warnLevels: [...GlobalConfig.general.battery.warnLevels].sort((a, b) => b.level - a.level)
 
+    readonly property int targetProfile: UPower.onBattery || !PowerProfiles.hasPerformanceProfile ? PowerProfile.Balanced : PowerProfile.Performance
+
+    onTargetProfileChanged: PowerProfiles.profile = targetProfile
+    Component.onCompleted: PowerProfiles.profile = targetProfile
+
     Connections {
         function onOnBatteryChanged(): void {
             if (UPower.onBattery) {
