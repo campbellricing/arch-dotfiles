@@ -1,67 +1,102 @@
 import QtQuick
 import QtQuick.Layouts
+import Quickshell
 import Quickshell.Services.UPower
 import Caelestia.Config
 import Caelestia.Services
 import qs.components
 import qs.services
 
-StyledClippingRect {
+Item {
     id: root
 
-    property real animPerc: UPower.displayDevice.percentage
+    readonly property var batteries: [...UPower.devices.values].filter(d => d.isLaptopBattery).sort((a, b) => a.nativePath.localeCompare(b.nativePath))
+    readonly property bool split: batteries.length > 1
 
-    color: Colours.palette.m3secondaryContainer
-    radius: Tokens.rounding.large
+    readonly property real tankWidth: Config.dashboard.performance.showCpu || (Config.dashboard.performance.showGpu && Gpu.type !== Gpu.None) || Config.dashboard.performance.showStorage || Config.dashboard.performance.showMemory ? Tokens.sizes.dashboard.perfBattWidth : Tokens.sizes.dashboard.perfBattWidthSingle
 
-    implicitWidth: Config.dashboard.performance.showCpu || (Config.dashboard.performance.showGpu && Gpu.type !== Gpu.None) || Config.dashboard.performance.showStorage || Config.dashboard.performance.showMemory ? Tokens.sizes.dashboard.perfBattWidth : Tokens.sizes.dashboard.perfBattWidthSingle
+    implicitWidth: tankWidth
     implicitHeight: Tokens.sizes.dashboard.perfBattHeight
 
-    Behavior on animPerc {
-        Anim {}
-    }
-
-    Contents {
-        id: layout
-
+    ColumnLayout {
         anchors.fill: parent
-        anchors.margins: Tokens.padding.medium
+        spacing: Tokens.spacing.small
 
-        accentColour: Colours.palette.m3primary
-        textColour: Colours.palette.m3onSurface
-        subTextColour: Colours.palette.m3onSurfaceVariant
+        Repeater {
+            model: ScriptModel {
+                values: root.split ? root.batteries : [UPower.displayDevice]
+            }
+
+            Tank {}
+        }
     }
 
-    StyledRect {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        implicitHeight: parent.height * root.animPerc
+    component Tank: StyledClippingRect {
+        id: tank
 
-        color: Colours.palette.m3secondary
-        radius: Tokens.rounding.extraSmall
-        clip: true
+        required property UPowerDevice modelData
+        readonly property UPowerDevice device: modelData
+        readonly property string label: root.split ? qsTr("Battery #%1").arg(device.nativePath.replace(/\D/g, "")) : qsTr("Battery")
+        property real animPerc: device.percentage
+
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+
+        color: Colours.palette.m3secondaryContainer
+        radius: Tokens.rounding.large
+
+        Behavior on animPerc {
+            Anim {}
+        }
 
         Contents {
+            id: layout
+
+            anchors.fill: parent
+            anchors.margins: Tokens.padding.medium
+
+            device: tank.device
+            label: tank.label
+            accentColour: Colours.palette.m3primary
+            textColour: Colours.palette.m3onSurface
+            subTextColour: Colours.palette.m3onSurfaceVariant
+        }
+
+        StyledRect {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            anchors.margins: layout.anchors.margins
-            height: layout.height
+            implicitHeight: parent.height * tank.animPerc
 
-            accentColour: Colours.palette.m3primaryContainer
-            textColour: Colours.palette.m3onSecondary
-            subTextColour: Colours.palette.m3secondaryContainer
+            color: Colours.palette.m3secondary
+            radius: Tokens.rounding.extraSmall
+            clip: true
+
+            Contents {
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.margins: layout.anchors.margins
+                height: layout.height
+
+                device: tank.device
+                label: tank.label
+                accentColour: Colours.palette.m3primaryContainer
+                textColour: Colours.palette.m3onSecondary
+                subTextColour: Colours.palette.m3secondaryContainer
+            }
         }
     }
 
     component Contents: ColumnLayout {
         id: contents
 
+        required property UPowerDevice device
+        required property string label
         required property color accentColour
         required property color textColour
         required property color subTextColour
-        readonly property bool charging: [UPowerDeviceState.Charging, UPowerDeviceState.FullyCharged, UPowerDeviceState.PendingCharge].includes(UPower.displayDevice.state)
+        readonly property bool charging: [UPowerDeviceState.Charging, UPowerDeviceState.FullyCharged, UPowerDeviceState.PendingCharge].includes(device.state)
 
         spacing: 0
 
@@ -74,9 +109,10 @@ StyledClippingRect {
 
         StyledText {
             Layout.fillWidth: true
-            text: qsTr("Battery")
+            text: contents.label
             color: contents.textColour
             font: Tokens.font.body.medium
+            elide: Text.ElideRight
         }
 
         Item {
@@ -86,13 +122,13 @@ StyledClippingRect {
         StyledText {
             Layout.alignment: Qt.AlignRight
             text: {
-                if (UPower.displayDevice.state === UPowerDeviceState.FullyCharged)
+                if (contents.device.state === UPowerDeviceState.FullyCharged)
                     return qsTr("Full");
 
                 if (contents.charging)
                     return qsTr("Charging");
 
-                const s = UPower.displayDevice.timeToEmpty;
+                const s = contents.device.timeToEmpty;
                 if (s === 0)
                     return qsTr("...");
 
@@ -138,7 +174,7 @@ StyledClippingRect {
             }
 
             StyledText {
-                text: `${Math.round(UPower.displayDevice.percentage * 100)}%`
+                text: `${Math.round(contents.device.percentage * 100)}%`
                 color: contents.accentColour
                 font: Tokens.font.headline.medium
             }

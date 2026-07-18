@@ -1,6 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
+import Quickshell
 import Quickshell.Services.UPower
 import Caelestia.Config
 import qs.components
@@ -9,14 +10,41 @@ import qs.services
 Column {
     id: root
 
+    readonly property var batteries: [...UPower.devices.values].filter(d => d.isLaptopBattery).sort((a, b) => a.nativePath.localeCompare(b.nativePath))
+
     spacing: Tokens.spacing.medium
     width: Tokens.sizes.bar.batteryWidth
 
     StyledText {
+        visible: root.batteries.length < 2
         text: UPower.displayDevice.isLaptopBattery ? qsTr("Remaining: %1%").arg(Math.round(UPower.displayDevice.percentage * 100)) : qsTr("No battery detected")
     }
 
+    Repeater {
+        model: ScriptModel {
+            values: root.batteries.length > 1 ? root.batteries : []
+        }
+
+        StyledText {
+            required property UPowerDevice modelData
+
+            text: {
+                const label = qsTr("Battery #%1").arg(modelData.nativePath.replace(/\D/g, ""));
+                const pct = Math.round(modelData.percentage * 100);
+                if (modelData.state === UPowerDeviceState.FullyCharged)
+                    return qsTr("%1: %2% (full)").arg(label).arg(pct);
+                if ([UPowerDeviceState.Charging, UPowerDeviceState.PendingCharge].includes(modelData.state))
+                    return qsTr("%1: %2% (charging)").arg(label).arg(pct);
+                if (modelData.state === UPowerDeviceState.Discharging)
+                    return qsTr("%1: %2% (discharging)").arg(label).arg(pct);
+                return qsTr("%1: %2%").arg(label).arg(pct);
+            }
+        }
+    }
+
     StyledText {
+        visible: root.batteries.length < 2
+
         function formatSeconds(s: int, fallback: string): string {
             const day = Math.floor(s / 86400);
             const hr = Math.floor(s / 3600) % 60;
