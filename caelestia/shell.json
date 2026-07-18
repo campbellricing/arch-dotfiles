@@ -155,6 +155,7 @@
         "vimKeybinds": true
     },
     "paths": {
+        "sessionGif": "/home/campbells/.config/images/gifs/session.gif",
         "wallpaperDir": "/home/campbells/.config/images/wallpapers"
     },
     "services": {
