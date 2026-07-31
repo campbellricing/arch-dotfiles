@@ -42,10 +42,10 @@ done < <(find "$REPO/usr/local/bin" -type f -print0)
 
 # --- SDDM theme (runtime files excluded) ------------------------------------
 while IFS= read -r -d '' src; do
-    rel="${src#"$REPO"/silent/}"
+    rel="${src#"$REPO"/sddm/silent/}"
     [[ "$rel" == backgrounds/current-wallpaper.png ]] && continue
-    report "silent/$rel" "$src" "$THEME_DEST/$rel"
-done < <(find "$REPO/silent" -type f -print0)
+    report "sddm/silent/$rel" "$src" "$THEME_DEST/$rel"
+done < <(find "$REPO/sddm/silent" -type f -print0)
 
 # --- pacnew/pacsave leftovers for tracked /etc files -------------------------
 while IFS= read -r -d '' src; do

@@ -3,7 +3,7 @@
 #
 #   etc/**              -> /etc/**
 #   usr/local/bin/**    -> /usr/local/bin/**
-#   silent/             -> /usr/share/sddm/themes/silent-caelestia/
+#   sddm/silent/        -> /usr/share/sddm/themes/silent-caelestia/
 #
 # Idempotent: only changed files are copied, and follow-up actions
 # (grub-mkconfig, daemon-reload, service restarts) only run when the
@@ -61,12 +61,12 @@ while IFS= read -r -d '' src; do
     copy_file "$src" "/usr/local/bin/${src#"$REPO"/usr/local/bin/}" 755
 done < <(find "$REPO/usr/local/bin" -type f -print0)
 
-# --- SDDM theme (silent/ -> silent-caelestia) ------------------------------
+# --- SDDM theme (sddm/silent/ -> silent-caelestia) --------------------------
 # backgrounds/current-wallpaper.png is runtime state written by
 # sddm-wallpaper-sync: deploy the repo copy only if it's missing.
 # backgrounds/wallpaper.mp4 is an optional local-only asset: leave it alone.
 while IFS= read -r -d '' src; do
-    rel="${src#"$REPO"/silent/}"
+    rel="${src#"$REPO"/sddm/silent/}"
     dest="$THEME_DEST/$rel"
     if [[ "$rel" == backgrounds/current-wallpaper.png && -f "$dest" ]]; then
         continue
@@ -74,7 +74,7 @@ while IFS= read -r -d '' src; do
     mode=644
     [[ "$src" == *.sh ]] && mode=755
     copy_file "$src" "$dest" "$mode"
-done < <(find "$REPO/silent" -type f -print0)
+done < <(find "$REPO/sddm/silent" -type f -print0)
 
 # Remove theme files that no longer exist in the repo (keep runtime assets)
 if [[ -d $THEME_DEST ]]; then
@@ -83,7 +83,7 @@ if [[ -d $THEME_DEST ]]; then
         case "$rel" in
             backgrounds/current-wallpaper.png|backgrounds/wallpaper.mp4) continue ;;
         esac
-        if [[ ! -f "$REPO/silent/$rel" ]]; then
+        if [[ ! -f "$REPO/sddm/silent/$rel" ]]; then
             if [[ $DRY_RUN -eq 1 ]]; then
                 echo "would remove stale theme file: $dest"
             else

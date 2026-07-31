@@ -35,7 +35,7 @@ Details: **[docs/maintenance.md](docs/maintenance.md)**
 | `hypr/` | Hyprland config in Lua, split by topic |
 | `caelestia/` | shell/CLI settings + scheme→terminal sync script + hypr override hooks |
 | `quickshell/caelestia/` | **vendored fork** of the caelestia shell — see [docs/shell-fork.md](docs/shell-fork.md) |
-| `silent/` | **vendored fork** of SilentSDDM, deployed as theme `silent-caelestia` |
+| `sddm/silent/` | **vendored fork** of SilentSDDM, deployed as theme `silent-caelestia` |
 | `catppuccin/` | single palette source (`mocha.conf`) + generators for starship/tmux |
 | `nvim/` | LazyVim config (plugins pinned via `lazy-lock.json`) |
 | `etc/`, `usr/` | system files, deployed to `/etc`, `/usr` by `scripts/deploy-system.sh` |

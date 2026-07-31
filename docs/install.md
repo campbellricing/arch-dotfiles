@@ -52,7 +52,7 @@ What it does (idempotent, re-run any time):
 5. Creates XDG user dirs.
 6. Runs `scripts/deploy-system.sh` (sudo): copies `etc/**` → `/etc`,
    `usr/local/bin/**` → `/usr/local/bin`, deploys the SDDM theme
-   `silent/` → `/usr/share/sddm/themes/silent-caelestia`, regenerates
+   `sddm/silent/` → `/usr/share/sddm/themes/silent-caelestia`, regenerates
    `grub.cfg` if needed.
 7. Enables system services: `NetworkManager`, `bluetooth`, `sddm`, `keyd`,
    `tlp`, `throttled`, `python3-validity`, `sddm-wallpaper-sync.path`.
@@ -79,7 +79,7 @@ In order, after the bootstrap:
    SDDM background via the wallpaper-sync unit.
 8. **Avatar**: `etc/sddm.conf` points `FacesDir` at `images/avatar/`, which
    already contains `campbells.face.icon` — nothing to do unless the username
-   changed (then run `silent/change_avatar.sh <user> <image>` or rename the
+   changed (then run `sddm/silent/change_avatar.sh <user> <image>` or rename the
    icon).
 9. **Register the caelestia dots**: `caelestia update` only works after
    `caelestia install` has recorded its state once. Run `caelestia install` —
@@ -102,7 +102,7 @@ In order, after the bootstrap:
 
 ### Login screen (SDDM)
 
-- Theme: repo `silent/` (fork of
+- Theme: repo `sddm/silent/` (fork of
   [SilentSDDM](https://github.com/uiriansan/SilentSDDM)) deployed to
   `/usr/share/sddm/themes/silent-caelestia`. Deployed under a name pacman
   doesn't own so package updates can never clobber it. The `sddm-silent-theme`
@@ -178,6 +178,6 @@ Everything under `~/.config` works in place. Files needing deployment:
 |---|---|---|
 | `etc/**` | `/etc/**` (same relative path) | `scripts/deploy-system.sh` |
 | `usr/local/bin/**` | `/usr/local/bin/**` | `scripts/deploy-system.sh` |
-| `silent/` | `/usr/share/sddm/themes/silent-caelestia/` | `scripts/deploy-system.sh` |
+| `sddm/silent/` | `/usr/share/sddm/themes/silent-caelestia/` | `scripts/deploy-system.sh` |
 | `.local/share/applications/*.desktop` | `~/.local/share/applications/` | `scripts/install.sh` |
 | `systemd/user/*` | in place (`~/.config/systemd/user`) | just `systemctl --user enable` |

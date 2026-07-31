@@ -108,4 +108,4 @@ Debugging: `journalctl -u sddm-wallpaper-sync.service` /
 | `catppuccin/sync-starship.sh` | Regenerate starship palette from `mocha.conf` |
 | `catppuccin/load-tmux.sh` | Load palette into tmux (called from tmux.conf) |
 | `caelestia/apply-term-scheme.py` | Push caelestia scheme to terminals (called by path unit) |
-| `silent/change_avatar.sh` | Set SDDM avatar for a user (crops/resizes) |
+| `sddm/silent/change_avatar.sh` | Set SDDM avatar for a user (crops/resizes) |
