@@ -1,0 +1,12 @@
+[Desktop Entry]
+NoDisplay=true
+Exec=kbd-layout-viewer5
+Icon=input-keyboard
+Type=Application
+
+Name=Keyboard layout viewer
+Comment=View keyboard layout
+
+X-KDE-Keywords=keyboard;input;im
+
+Categories=Qt;KDE;Utility;

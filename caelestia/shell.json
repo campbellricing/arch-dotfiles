@@ -144,7 +144,8 @@
             "libreoffice-writer",
             "thunar-settings",
             "org.pulseaudio.pavucontrol",
-            "org.gnome.Nautilus"
+            "org.gnome.Nautilus",
+            "yazi"
         ],
         "maxShown": 8,
         "maxWallpapers": 8,
