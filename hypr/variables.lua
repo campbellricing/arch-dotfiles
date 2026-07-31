@@ -134,7 +134,8 @@ return {
 	kbTerminal = "SUPER + RETURN", -- open terminal
 	kbBrowser = "SUPER + SHIFT + RETURN", -- open browser
 	-- kbEditor = "SUPER + C", -- open code editor
-	kbFileExplorer = "ALT + E", -- open file explorer
+	kbFileExplorer = "ALT + SHIFT + E", -- open file explorer
+	kbYazi = "ALT + E", -- open yazi (terminal file manager)
 	kbNotes = "SUPER + SHIFT + Z", -- open zennotes
 
 	-- Utilities

@@ -153,6 +153,7 @@ hl.bind(vars.kbTerminal, hl.dsp.exec_cmd(vars.terminal))
 hl.bind(vars.kbBrowser, hl.dsp.exec_cmd(vars.browser))
 -- hl.bind(vars.kbEditor, hl.dsp.exec_cmd(vars.editor))
 hl.bind(vars.kbFileExplorer, hl.dsp.exec_cmd(vars.fileExplorer))
+hl.bind(vars.kbYazi, hl.dsp.exec_cmd("foot --app-id yazi -e yazi"))
 hl.bind(vars.kbNotes, hl.dsp.exec_cmd("zennotes"))
 -- hl.bind("CTRL + ALT + V", hl.dsp.exec_cmd(vars.audioSettings))
 
