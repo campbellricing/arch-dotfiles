@@ -1,0 +1,15 @@
+bibata-cursor-theme-bin
+caelestia-cli
+caelestia-firefox-theme
+caelestia-shell
+darkly-bin
+debtap
+gtk
+mqttx-bin
+pam-fprint-grosshack
+papirus-folders
+python-validity
+qtengine
+teamviewer
+yay
+zennotes-bin
