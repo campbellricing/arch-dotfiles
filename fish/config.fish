@@ -1,3 +1,6 @@
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+
 if status is-interactive
     # Starship custom prompt
     command -v starship &>/dev/null && starship init fish | source

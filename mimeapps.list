@@ -14,6 +14,20 @@ image/gif=sushi.desktop
 image/bmp=sushi.desktop
 image/svg+xml=sushi.desktop
 image/avif=sushi.desktop
+text/plain=nvim.desktop
+text/x-makefile=nvim.desktop
+text/x-c++hdr=nvim.desktop
+text/x-c++src=nvim.desktop
+text/x-chdr=nvim.desktop
+text/x-csrc=nvim.desktop
+text/x-java=nvim.desktop
+text/x-moc=nvim.desktop
+text/x-pascal=nvim.desktop
+text/x-tcl=nvim.desktop
+text/x-tex=nvim.desktop
+application/x-shellscript=nvim.desktop
+text/x-c=nvim.desktop
+text/x-c++=nvim.desktop
 
 [Added Associations]
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-startcenter.desktop;
@@ -26,3 +40,4 @@ image/gif=swappy.desktop
 image/bmp=swappy.desktop
 image/svg+xml=swappy.desktop
 image/avif=swappy.desktop
+application/json=nvim.desktop;

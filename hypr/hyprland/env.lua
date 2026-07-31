@@ -19,6 +19,10 @@ hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 
+-- Default editor
+hl.env("EDITOR", "nvim")
+hl.env("VISUAL", "nvim")
+
 -- Others
 hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
 hl.env("CAELESTIA_WALLPAPERS_DIR", "/home/campbells/.config/images/wallpapers")
