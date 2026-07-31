@@ -172,6 +172,11 @@
                 "-c",
                 "hyprctl dispatch dpms off; systemctl suspend-then-hibernate"
             ],
+            "logout": [
+                "hyprctl",
+                "dispatch",
+                "hl.dsp.exit()"
+            ],
             "reboot": [
                 "systemctl",
                 "reboot",
