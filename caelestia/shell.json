@@ -167,6 +167,11 @@
     },
     "session": {
         "commands": {
+            "hibernate": [
+                "bash",
+                "-c",
+                "hyprctl dispatch dpms off; systemctl suspend-then-hibernate"
+            ],
             "reboot": [
                 "systemctl",
                 "reboot",
