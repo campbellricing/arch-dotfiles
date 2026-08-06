@@ -41,7 +41,6 @@ if status is-interactive
     abbr gbd 'git branch -d'
     abbr gc 'git checkout'
 
-    abbr yd 'yarn dev --host'
     abbr yf 'yarn format'
     abbr yl 'yarn lint'
     abbr ylf 'yarn lint --fix'
