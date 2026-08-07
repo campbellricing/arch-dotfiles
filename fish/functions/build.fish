@@ -1,14 +1,14 @@
-function yd --description 'Run the dev script with the package manager matching the repo lockfile'
+function build --description 'Build the app with the package manager matching the repo lockfile'
     if test -f pnpm-lock.yaml
-        pnpm dev
+        pnpm build
     else if test -f package-lock.json
-        npm run dev
+        npm run build
     else if test -f bun.lockb -o -f bun.lock
-        bun dev
+        bun build
     else if test -f yarn.lock
-        yarn dev
+        yarn build
     else
         echo "yd: no lockfile found, defaulting to yarn" >&2
-        yarn dev
+        yarn build
     end
 end
