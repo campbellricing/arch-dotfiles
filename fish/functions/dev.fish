@@ -8,7 +8,7 @@ function dev --description 'Run the dev script with the package manager matching
     else if test -f yarn.lock
         yarn dev
     else
-        echo "yd: no lockfile found, defaulting to yarn" >&2
+        echo "dev: no lockfile found, defaulting to yarn" >&2
         yarn dev
     end
 end

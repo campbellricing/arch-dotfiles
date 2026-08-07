@@ -8,7 +8,7 @@ function build --description 'Build the app with the package manager matching th
     else if test -f yarn.lock
         yarn build
     else
-        echo "yd: no lockfile found, defaulting to yarn" >&2
+        echo "build: no lockfile found, defaulting to yarn" >&2
         yarn build
     end
 end

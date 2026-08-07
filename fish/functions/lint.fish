@@ -8,7 +8,7 @@ function lint --description 'Lint with the package manager matching the repo loc
     else if test -f yarn.lock
         yarn lint
     else
-        echo "yd: no lockfile found, defaulting to yarn" >&2
+        echo "lint: no lockfile found, defaulting to yarn" >&2
         yarn lint
     end
 end
