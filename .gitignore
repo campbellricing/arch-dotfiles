@@ -1,4 +1,5 @@
 BetterDiscord
+BraveSoftware
 Equicord
 Vencord
 Thunar
@@ -13,6 +14,7 @@ fcitx5
 fish/fish_variables
 fuzzel/fuzzel.ini
 go
+google-chrome
 gtk-3.0
 gtk-4.0
 htop
@@ -24,10 +26,12 @@ lazygit
 legcord
 nvtop
 menus
+microsoft-edge
 mpv
 MQTTX
 nextjs-nodejs
 obs-studio
+opera
 pulse
 qt6ct
 qtengine
@@ -40,6 +44,7 @@ vesktop
 xfce4
 xsettingsd
 vlc
+vivaldi
 yay
 yarn
 yazi/flavors
