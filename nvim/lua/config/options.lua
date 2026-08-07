@@ -12,7 +12,5 @@ vim.opt.tabstop = 2
 vim.opt.smartindent = true
 vim.opt.wildignore:append({ "*/node_modules/*" }) -- ignores node_modules folder
 vim.opt.fillchars = { fold = " " }
-vim.opt.foldmethod = "indent"
-vim.opt.foldenable = false
 vim.opt.foldlevel = 99
 vim.g.snacks_animate = false
