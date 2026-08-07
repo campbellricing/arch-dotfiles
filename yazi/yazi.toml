@@ -7,3 +7,8 @@ wrap = "yes"
 
 [preview]
 image_delay = 0
+
+[open]
+prepend_rules = [
+	{ url = "*.zip", use = "extract" },
+]
