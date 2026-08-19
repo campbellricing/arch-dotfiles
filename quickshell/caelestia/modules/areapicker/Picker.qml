@@ -78,7 +78,13 @@ MouseArea {
                 Quickshell.execDetached(["sh", "-c", "wl-copy --type image/png < " + path]);
                 Quickshell.execDetached(["notify-send", "-a", "caelestia-cli", "-i", path, "Screenshot taken", "Screenshot copied to clipboard"]);
             } else {
-                Quickshell.execDetached(["swappy", "-f", path]);
+                Quickshell.execDetached({
+                    command: ["swappy", "-f", path],
+                    // Without this, swappy inherits HL_INITIAL_WORKSPACE_TOKEN from this
+                    // long-running shell process and Hyprland pins its window to whatever
+                    // workspace was active when the shell itself started, not the current one.
+                    environment: { HL_INITIAL_WORKSPACE_TOKEN: "" }
+                });
             }
             closeAnim.start();
         });
