@@ -33,8 +33,16 @@ verbatim from `/etc/xdg/quickshell/caelestia/`.
 
 | File | Change |
 |---|---|
+| `modules/bar/Bar.qml` | Click-to-open panels (see note below): add `togglePopout()`/`setPopout()` (click a status/tray icon to toggle its popout); add `notifs` + `controlcenter` bar entries (opt-in via `shell.json` `bar.entries`; currently `enabled: false`) |
+| `modules/bar/BarWrapper.qml` | Click-to-open panels: forward `togglePopout()` to `Bar`; keep the bar visible while a popout is open (`shouldBeVisible \|\| popouts.hasCurrent`) so click-mode popouts don't detach from a non-persistent bar |
+| `modules/bar/components/Clock.qml` | Click-to-open panels: `MouseArea` toggling the dashboard |
+| `modules/bar/components/ControlCenter.qml` | **New file.** Bar button (icon `tune`) toggling the control-center / utilities panel — used by the `controlcenter` bar entry |
+| `modules/bar/components/Notifications.qml` | **New file.** Bar button (icon `notifications`) toggling the notifications / sidebar panel — used by the `notifs` bar entry (named `Notifications` not `Notifs` to avoid colliding with the `services/Notifs.qml` singleton) |
+| `modules/bar/components/Tray.qml` | Click-to-open panels: pass `bar` through to `TrayItem` |
+| `modules/bar/components/TrayItem.qml` | Click-to-open panels: right-click opens the tray item's menu as a popout (was `secondaryActivate()`, now moved to middle-click) |
 | `modules/dashboard/dash/User.qml` | Drop `"up "` prefix from uptime; replace WM icon/name row with custom text ("B-baka…") |
-| `modules/drawers/Interactions.qml` | Add `osdShowOnHover` / `utilitiesShowOnHover` switches (both `false`) — upstream hardcodes open-on-hover for the OSD and utilities panels |
+| `modules/drawers/ContentWindow.qml` | Click-to-open panels: focus grab (close-on-click-outside) also covers the utilities panel and click-mode bar popouts; `onCleared` also hides utilities |
+| `modules/drawers/Interactions.qml` | Add `osdShowOnHover` / `utilitiesShowOnHover` / `popoutsShowOnHover` switches (all `false`) — upstream hardcodes open-on-hover for the OSD, utilities and bar-icon popouts. `popoutsShowOnHover: false` routes bar status/tray icon clicks to `bar.togglePopout()` instead |
 | `modules/launcher/AppList.qml` | Bug fix: bind `model.values` directly instead of via `PropertyChanges` — state transitions left the binding dead, freezing launcher search results |
 | `modules/lock/center/ProfilePic.qml` | Smaller (0.5× instead of 0.7×) circular avatar instead of clam-shell shape |
 | `modules/lock/Content.qml` | Uniform `extraLarge` corner radius |

@@ -19,6 +19,15 @@ StyledRect {
     color: Qt.alpha(Colours.tPalette.m3surfaceContainer, Config.bar.clock.background ? Colours.tPalette.m3surfaceContainer.a : 0)
     radius: Tokens.rounding.full
 
+    MouseArea {
+        anchors.fill: parent
+        cursorShape: Qt.PointingHandCursor
+        onClicked: {
+            const visibilities = Visibilities.getForActive();
+            visibilities.dashboard = !visibilities.dashboard;
+        }
+    }
+
     ColumnLayout {
         id: layout
 

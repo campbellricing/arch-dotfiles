@@ -76,6 +76,57 @@ ColumnLayout {
         }
     }
 
+    // Click-to-toggle equivalent of checkPopout: opens the popout under `y`,
+    // or closes it if it's already the current one. Used when popouts are in
+    // click mode (Interactions.popoutsShowOnHover === false).
+    function togglePopout(y: real): void {
+        const ch = childAt(width / 2, y) as WrappedLoader;
+
+        if (ch?.entryId !== "tray")
+            closeTray();
+
+        if (!ch)
+            return;
+
+        const id = ch.entryId;
+        const top = ch.y;
+
+        if (id === "statusIcons" && Config.bar.popouts.statusIcons) {
+            const items = (ch.item as StatusIcons).items;
+            const icon = items.childAt(items.width / 2, mapToItem(items, 0, y).y);
+            if (icon)
+                setPopout(icon.name, () => icon.mapToItem(root, 0, icon.implicitHeight / 2).y);
+        } else if (id === "tray" && Config.bar.popouts.tray) {
+            const tray = ch.item as Tray;
+            if (!Config.bar.tray.compact || (tray.expanded && !tray.expandIcon.contains(mapToItem(tray.expandIcon, tray.implicitWidth / 2, y)))) {
+                const index = Math.floor(((y - top - tray.padding * 2 + tray.spacing) / tray.layout.implicitHeight) * tray.items.count);
+                const trayItem = tray.items.itemAt(index);
+                if (trayItem)
+                    setPopout(`traymenu${index}`, () => trayItem.mapToItem(root, 0, trayItem.implicitHeight / 2).y);
+            } else if (Config.bar.tray.compact) {
+                tray.expanded = !tray.expanded;
+            }
+        }
+    }
+
+    // Toggle a tray item's menu popout (bound to right-click on the tray icon).
+    function toggleTrayPopout(index: int, item: Item): void {
+        if (Config.bar.popouts.tray && item)
+            setPopout(`traymenu${index}`, () => item.mapToItem(root, 0, item.implicitHeight / 2).y);
+    }
+
+    // Sets the popout to `name` (centred at `centerFn()`), or closes it if it's
+    // already the current, visible popout.
+    function setPopout(name: string, centerFn: var): void {
+        if (popouts.hasCurrent && popouts.currentName === name) {
+            popouts.hasCurrent = false;
+        } else {
+            popouts.currentName = name;
+            popouts.currentCenter = Qt.binding(centerFn);
+            popouts.hasCurrent = true;
+        }
+    }
+
     function handleWheel(y: real, angleDelta: point): void {
         const ch = childAt(width / 2, y) as WrappedLoader;
         if (ch?.entryId === "workspaces" && Config.bar.scrollActions.workspaces) {
@@ -148,7 +199,9 @@ ColumnLayout {
                 roleValue: "tray"
                 delegate: WrappedLoader {
                     visible: !root.fullscreen
-                    sourceComponent: Tray {}
+                    sourceComponent: Tray {
+                        bar: root
+                    }
                 }
             }
             DelegateChoice {
@@ -163,6 +216,22 @@ ColumnLayout {
                 delegate: WrappedLoader {
                     visible: !root.fullscreen
                     sourceComponent: StatusIcons {}
+                }
+            }
+            DelegateChoice {
+                roleValue: "notifs"
+                delegate: WrappedLoader {
+                    sourceComponent: Notifications {
+                        visibilities: root.visibilities
+                    }
+                }
+            }
+            DelegateChoice {
+                roleValue: "controlcenter"
+                delegate: WrappedLoader {
+                    sourceComponent: ControlCenter {
+                        visibilities: root.visibilities
+                    }
                 }
             }
             DelegateChoice {

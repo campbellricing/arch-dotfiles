@@ -22,6 +22,11 @@ CustomMouseArea {
     readonly property bool osdShowOnHover: false
     readonly property bool utilitiesShowOnHover: false
 
+    // Bar status-icon / tray popouts: hover opens them upstream. false => click the
+    // bar icon to toggle its popout instead (closed on click-outside via the
+    // ContentWindow focus grab). Set to true to restore hover behaviour.
+    readonly property bool popoutsShowOnHover: false
+
     property point dragStart
     property bool dashboardShortcutActive
     property bool osdShortcutActive
@@ -67,7 +72,13 @@ CustomMouseArea {
     acceptedButtons: fullscreen ? Qt.NoButton : Qt.AllButtons
     hoverEnabled: true
 
-    onPressed: event => dragStart = Qt.point(event.x, event.y)
+    onPressed: event => {
+        dragStart = Qt.point(event.x, event.y);
+
+        // Click a bar icon to toggle its popout (when popouts aren't hover-driven)
+        if (!fullscreen && !popoutsShowOnHover && !popouts.isDetached && event.x < bar.implicitWidth)
+            bar.togglePopout(event.y);
+    }
     onContainsMouseChanged: {
         if (!containsMouse) {
             // Only hide if not activated by shortcut
@@ -82,7 +93,7 @@ CustomMouseArea {
             if (!utilitiesShortcutActive)
                 visibilities.utilities = false;
 
-            if (!popouts.currentName.startsWith("traymenu") || ((popouts.current as StackView)?.depth ?? 0) <= 1) {
+            if (popoutsShowOnHover && (!popouts.currentName.startsWith("traymenu") || ((popouts.current as StackView)?.depth ?? 0) <= 1)) {
                 popouts.hasCurrent = false;
                 bar.closeTray();
             }
@@ -242,11 +253,13 @@ CustomMouseArea {
         }
 
         // Show popouts on hover
-        if (x < bar.implicitWidth) {
-            bar.checkPopout(y);
-        } else if ((!popouts.currentName.startsWith("traymenu") || ((popouts.current as StackView)?.depth ?? 0) <= 1) && !inLeftPanel(panels.popoutsWrapper, x, y)) {
-            popouts.hasCurrent = false;
-            bar.closeTray();
+        if (popoutsShowOnHover) {
+            if (x < bar.implicitWidth) {
+                bar.checkPopout(y);
+            } else if ((!popouts.currentName.startsWith("traymenu") || ((popouts.current as StackView)?.depth ?? 0) <= 1) && !inLeftPanel(panels.popoutsWrapper, x, y)) {
+                popouts.hasCurrent = false;
+                bar.closeTray();
+            }
         }
     }
 

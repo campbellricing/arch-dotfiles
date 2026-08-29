@@ -50,6 +50,14 @@
             },
             {
                 "enabled": false,
+                "id": "controlcenter"
+            },
+            {
+                "enabled": false,
+                "id": "notifs"
+            },
+            {
+                "enabled": false,
                 "id": "power"
             }
         ],
@@ -65,7 +73,7 @@
             "workspaces": false
         },
         "status": {
-            "showAudio": true,
+            "showAudio": false,
             "showBattery": true,
             "showBluetooth": true,
             "showKbLayout": false,

@@ -11,16 +11,20 @@ MouseArea {
     id: root
 
     required property SystemTrayItem modelData
+    required property int index
+    property var bar
 
-    acceptedButtons: Qt.LeftButton | Qt.RightButton
+    acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
     implicitWidth: Tokens.font.body.small.pointSize * 2
     implicitHeight: Tokens.font.body.small.pointSize * 2
 
     onClicked: event => {
         if (event.button === Qt.LeftButton)
             modelData.activate();
-        else
+        else if (event.button === Qt.MiddleButton)
             modelData.secondaryActivate();
+        else
+            root.bar?.toggleTrayPopout(root.index, root);
     }
 
     ColouredIcon {

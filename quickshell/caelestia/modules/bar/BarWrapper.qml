@@ -21,7 +21,7 @@ Item {
     readonly property int padding: Math.max(Tokens.padding.small, Config.border.thickness)
     readonly property int contentWidth: Tokens.sizes.bar.innerWidth + padding * 2
     readonly property int exclusiveZone: !disabled && (Config.bar.persistent || visibilities.bar) ? contentWidth : Config.border.thickness
-    readonly property bool shouldBeVisible: !fullscreen && !disabled && (Config.bar.persistent || visibilities.bar || isHovered)
+    readonly property bool shouldBeVisible: !fullscreen && !disabled && (Config.bar.persistent || visibilities.bar || isHovered || popouts.hasCurrent)
     property bool isHovered
 
     function closeTray(): void {
@@ -30,6 +30,10 @@ Item {
 
     function checkPopout(y: real): void {
         (content.item as Bar)?.checkPopout(y);
+    }
+
+    function togglePopout(y: real): void {
+        (content.item as Bar)?.togglePopout(y);
     }
 
     function handleWheel(y: real, angleDelta: point): void {
