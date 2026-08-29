@@ -12,6 +12,7 @@ hl.config({
 })
 
 hl.gesture({ fingers = vars.workspaceSwipeFingers, direction = "vertical", action = "workspace" })
+hl.gesture({ fingers = vars.workspaceSwipeFingers, direction = "horizontal", action = "scroll_move", scale = 2.5 })
 -- hl.gesture({ fingers = vars.gestureFingers, direction = "up", action = "special", workspace_name = "special" })
 -- hl.gesture({
 --     fingers   = vars.gestureFingers,
