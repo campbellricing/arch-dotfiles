@@ -28,6 +28,7 @@ text/x-tex=nvim.desktop
 application/x-shellscript=nvim.desktop
 text/x-c=nvim.desktop
 text/x-c++=nvim.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-startcenter.desktop;
